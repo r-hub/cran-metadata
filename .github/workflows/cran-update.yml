@@ -4,9 +4,17 @@ on:
   schedule:
     - cron: '46 3 * * *'
 
+permissions: read-all
+
 jobs:
   cran-update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: bash
+        working-directory: /root/pkg
     container:
       image: ghcr.io/r-hub/cran-metadata:latest
       credentials:
