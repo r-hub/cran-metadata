@@ -21,9 +21,13 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: gh-pages
+        path: www
     - name: Update
-      run: quarto render
+      run: quarto render $PROJECT_ROOT
+    - name: test
+      run: cd www; git status
     - name: Deploy to GitHub pages 🚀
+      if: false
       uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
         clean: false
