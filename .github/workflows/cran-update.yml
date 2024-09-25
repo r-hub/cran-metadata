@@ -24,8 +24,14 @@ jobs:
         path: www
     - name: Update
       run: |
+        pwd
+        ls -l
+        echo $PROJECT_ROOT
+        ls -l $PROJECT_ROOT
         ln -s `pwd`/www $PROJECT_ROOT/www
-        quarto render $PROJECT_ROOT
+        ls -l $PROJECT_ROOT
+        cd $PROJECT_ROOT
+        quarto render
     - name: test
       run: cd www; git status
     - name: Deploy to GitHub pages 🚀
