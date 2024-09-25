@@ -23,7 +23,9 @@ jobs:
         ref: gh-pages
         path: www
     - name: Update
-      run: quarto render $PROJECT_ROOT
+      run: |
+        ln -s `pwd`/www $PROJECT_ROOT/www
+        quarto render $PROJECT_ROOT
     - name: test
       run: cd www; git status
     - name: Deploy to GitHub pages 🚀
