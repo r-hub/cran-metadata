@@ -1,0 +1,14 @@
+---
+title: CRAN metadata update
+---
+
+```{r}
+#| label: setup
+pkgload::load_all()
+```
+
+The current time is `r Sys.time()`. Updating CRAN metadata.
+
+```{r}
+update()
+```
