@@ -5,6 +5,12 @@ Imports:
     cli,
     desc,
     glue,
+    knitr,
+    pkgload,
+    rmarkdown,
     rvest,
     tibble
+Suggests:
+    testthat
 SystemRequirements: gzip, tar, unzip
+Config/testthat/edition: 3
