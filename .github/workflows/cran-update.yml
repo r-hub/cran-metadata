@@ -26,6 +26,11 @@ jobs:
       with:
         ref: gh-pages
         path: www
+    - name: Debug
+      run: |
+        ls -l
+        pwd
+        cat /etc/os-release
     - name: Update
       run: quarto render
     - name: Deploy to GitHub pages 🚀
