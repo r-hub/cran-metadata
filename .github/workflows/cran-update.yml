@@ -11,10 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    defaults:
-      run:
-        shell: bash
-        working-directory: /root/pkg
     container:
       image: ghcr.io/r-hub/cran-metadata:latest
       credentials:
@@ -25,13 +21,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: gh-pages
-        path: pkg/www
-    - name: Debug
-      run: |
-        ls -l
-        ls -l ..
-        find .. -name "DESCRIPTION"
-        pwd
     - name: Update
       run: quarto render
     - name: Deploy to GitHub pages 🚀

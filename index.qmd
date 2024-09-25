@@ -4,7 +4,7 @@ title: CRAN metadata update
 
 ```{r}
 #| label: setup
-pkgload::load_all()
+pkgload::load_all(Sys.getenv("PROJECT_ROOT", "."))
 ```
 
 The current time is `r Sys.time()`. Updating CRAN metadata.

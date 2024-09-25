@@ -13,13 +13,13 @@ RUN R -q -e 'options(timeout = 60000); download.file("https://github.com/quarto-
 # if DESCRIPTION changes
 COPY DESCRIPTION .
 
-RUN R -q -e 'pak::pkg_install("deps::."); pak::cache_clean(); pak::meta_clean(TRUE)' && \
+RUN R -q -e 'pak::pkg_install("deps::.", lib = .Library); pak::cache_clean(); pak::meta_clean(TRUE)' && \
     apt-get clean
 
 # copy everything, minus the stuff in .dockerignore
 COPY . pkg
-
 WORKDIR /root/pkg
+ENV PROJECT_ROOT=/root/pkg
 
 # -------------------------------------------------------------------------
 FROM build as test
