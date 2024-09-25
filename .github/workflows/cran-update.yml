@@ -24,20 +24,15 @@ jobs:
         path: www
     - name: Update
       run: |
-        pwd
-        ls -l
-        echo $PROJECT_ROOT
-        ls -l $PROJECT_ROOT
-        ln -s `pwd`/www $PROJECT_ROOT/www
-        ls -l $PROJECT_ROOT
+        mv www $PROJECT_ROOT/
         cd $PROJECT_ROOT
-        quarto render `find . -name "*.qmd"`
+        quarto render
     - name: test
-      run: cd www; git status
+      run: cd $PROJECT_ROOT/www; git status
     - name: Deploy to GitHub pages 🚀
       if: false
       uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
         clean: false
         branch: gh-pages
-        folder: www
+        folder: /root/pkg/www
