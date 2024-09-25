@@ -23,7 +23,7 @@ RUN R -q -e 'pak::pkg_install("deps::.", dependencies = TRUE); pak::cache_clean(
     rm DESCRIPTION
 
 # copy everything, minus the stuff in .dockerignore
-COPY . pkg
+COPY . /root/pkg
 WORKDIR /root/pkg
 RUN R -q -e 'testthat::test_local()'
 
