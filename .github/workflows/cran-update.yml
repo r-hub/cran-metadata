@@ -17,16 +17,19 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
+    - name: Checkout repo with code
+      uses: actions/checkout@v4
     - name: Checkout gh-pages
       uses: actions/checkout@v4
       with:
         ref: gh-pages
+        path: www
     - name: Update
       run: |
-        cd $PROJECT_ROOT
-        quarto render --output-dir $GITHUB_WORKSPACE
+        quarto render
     - name: test
       run: |
+        cd www
         git status
         git diff
     - name: Deploy to GitHub pages 🚀
@@ -34,5 +37,5 @@ jobs:
       with:
         clean: false
         branch: gh-pages
-        folder: .
+        folder: www
         dry-run: true
