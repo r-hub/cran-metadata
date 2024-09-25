@@ -30,7 +30,6 @@ jobs:
     - name: test
       run: cd $PROJECT_ROOT/www; git status
     - name: Deploy to GitHub pages 🚀
-      if: false
       uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
         clean: false
