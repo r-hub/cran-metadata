@@ -29,7 +29,7 @@ parse_package_list <- function(dir) {
 }
 
 parse_metadata_file <- function(dir) {
-  path <- file.path("www", "metadata", dir, "METADATA2.gz")
+  path <- file.path(repo_root(), "metadata", dir, "METADATA2.gz")
   cli::cli_alert_info("Parsing metadata from {.path {path}}.")
   tab <- tibble::tibble(read.csv(path))
   tab

@@ -18,7 +18,7 @@ update_dir <- function(dir) {
   # but that's fine, we match on path in pkgcache
   upd <- upd[order(upd$package, upd$version),]
   upd$url <- glue::glue("{get_cran_mirror()}/{dir}/{upd[['file']]}")
-  destdir <- file.path("cache", dir)
+  destdir <- file.path(cache_dir(), dir)
   upd$path <- download_files(upd[["url"]], destdir)
 
   newdata <- tibble::tibble(
@@ -53,7 +53,7 @@ update_dir <- function(dir) {
 }
 
 write_metadata <- function(dir, metadata) {
-  path <- file.path("www", "metadata", dir, "METADATA2.gz")
+  path <- file.path(repo_root(), "metadata", dir, "METADATA2.gz")
   outcon <- gzcon(file(path, "wb"))
   utils::write.csv(metadata, outcon, row.names = FALSE)
   close(outcon)
