@@ -31,7 +31,7 @@ jobs:
         ln -s `pwd`/www $PROJECT_ROOT/www
         ls -l $PROJECT_ROOT
         cd $PROJECT_ROOT
-        quarto render
+        quarto render `find . -name "*.qmd"`
     - name: test
       run: cd www; git status
     - name: Deploy to GitHub pages 🚀
