@@ -25,17 +25,10 @@ jobs:
         ref: gh-pages
         path: www
     - name: Update
-      run: |
-        quarto render
-    - name: test
-      run: |
-        cd www
-        git status
-        git diff
+      run: quarto render
     - name: Deploy to GitHub pages 🚀
       uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
         clean: false
         branch: gh-pages
         folder: www
-        dry-run: true
