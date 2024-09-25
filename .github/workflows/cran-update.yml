@@ -25,12 +25,13 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: gh-pages
-        path: www
+        path: pkg/www
     - name: Debug
       run: |
         ls -l
+        ls -l ..
+        find .. -name "DESCRIPTION"
         pwd
-        cat /etc/os-release
     - name: Update
       run: quarto render
     - name: Deploy to GitHub pages 🚀
