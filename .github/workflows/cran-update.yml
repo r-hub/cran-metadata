@@ -24,6 +24,8 @@ jobs:
     - name: Update
       run: Rscript index.R
       working-directory: /app
+    - name: Workaround a deployment bug
+      run: git config --global safe.directory '*'
     - name: Deploy to GitHub pages 🚀
       uses: JamesIves/github-pages-deploy-action@v4.6.4
       with:
