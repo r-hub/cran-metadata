@@ -13,16 +13,14 @@ RUN R -q -e 'pak::pkg_install("deps::.", lib = .Library); pak::cache_clean(); pa
     apt-get clean && \
     rm DESCRIPTION
 
+# copy everything, minus the stuff in .dockerignore
 COPY . /app
 WORKDIR /app
 
 # -------------------------------------------------------------------------
 FROM build AS test
-
 RUN R -q -e 'pak::pkg_install("deps::.", dependencies = TRUE); pak::cache_clean(); pak::meta_clean(TRUE)' && \
     apt-get clean
-
-# copy everything, minus the stuff in .dockerignore
 RUN R -q -e 'testthat::test_local()'
 
 # -------------------------------------------------------------------------
