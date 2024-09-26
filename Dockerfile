@@ -19,8 +19,7 @@ WORKDIR /app
 
 # -------------------------------------------------------------------------
 FROM build AS test
-RUN R -q -e 'pak::pkg_install("deps::.", dependencies = TRUE); pak::cache_clean(); pak::meta_clean(TRUE)' && \
-    apt-get clean
+RUN R -q -e 'pak::pkg_install("deps::.", dependencies = TRUE)'
 RUN R -q -e 'testthat::test_local()'
 
 # -------------------------------------------------------------------------
