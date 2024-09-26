@@ -1,2 +1,7 @@
 /cache
 /www
+/.git
+/.dockerignore
+/.github
+/.gitignore
+/.quarto
