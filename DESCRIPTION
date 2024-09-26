@@ -5,9 +5,7 @@ Imports:
     cli,
     desc,
     glue,
-    knitr,
     pkgload,
-    rmarkdown,
     rvest,
     tibble
 Suggests:

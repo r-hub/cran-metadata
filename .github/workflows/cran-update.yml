@@ -17,18 +17,16 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - name: Checkout repo with code
-      uses: actions/checkout@v4
     - name: Checkout gh-pages
       uses: actions/checkout@v4
       with:
         ref: gh-pages
-        path: www
     - name: Update
-      run: quarto render
+      run: Rscript index.R
+      working-directory: /app
     - name: Deploy to GitHub pages 🚀
       uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
         clean: false
         branch: gh-pages
-        folder: www
+        folder: .

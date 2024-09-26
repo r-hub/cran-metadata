@@ -1,7 +1,7 @@
 repo_root <- function() {
-  "www"
+  file.path(Sys.getenv("GITHUB_WORKSPACE", "www"))
 }
 
 cache_dir <- function() {
-  "cache"
+  file.path(Sys.getenv("RUNNER_TEMP", "cache"))
 }
