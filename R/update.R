@@ -1,5 +1,26 @@
 get_package_directories <- function() {
-  "src/contrib"
+  c(
+    "src/contrib",
+    # old macOS
+    # "bin/macosx/contrib/4.0",
+    # "bin/macosx/contrib/4.1",
+    # "bin/macosx/contrib/4.2",
+    # arm64 package binaries for R 4.1 seem to be lost?
+    "bin/macosx/big-sur-arm64/contrib/4.2",
+    # new macOS x86_64
+    "bin/macosx/big-sur-x86_64/contrib/4.3",
+    "bin/macosx/big-sur-x86_64/contrib/4.4",
+    # new macOS arm64
+    "bin/macosx/big-sur-arm64/contrib/4.3",
+    "bin/macosx/big-sur-arm64/contrib/4.4",
+    # windows
+    # "bin/windows/contrib/4.0",
+    # "bin/windows/contrib/4.1",
+    "bin/windows/contrib/4.2",
+    "bin/windows/contrib/4.3",
+    "bin/windows/contrib/4.4",
+    "bin/windows/contrib/4.5"
+  )
 }
 
 update <- function() {
@@ -12,6 +33,10 @@ update <- function() {
 
 update_dir <- function(dir) {
   stat <- get_state(dir)
+  if (nrow(stat$missing) == 0) {
+    cli::cli_alert_success("All packages are up to date.")
+    return(invisible(NULL))
+  }
   cli::cli_alert_info("Will update {nrow(stat$missing)} package{?s}.")
   upd <- stat$missing
   # there might be multiple versions of the same package,
@@ -54,6 +79,7 @@ update_dir <- function(dir) {
 
 write_metadata <- function(dir, metadata) {
   path <- file.path(repo_root(), "metadata", dir, "METADATA2.gz")
+  mkdirp(dirname(path))
   outcon <- gzcon(file(path, "wb"))
   utils::write.csv(metadata, outcon, row.names = FALSE)
   close(outcon)

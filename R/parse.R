@@ -6,9 +6,13 @@ parse_file_name <- function(x) {
   list(
     package = sub("_.*$", "", basename(x)),
     version = package_version(
-      sub("([.]tar[.]gz|[.]zip)$", "", sub("^.*_", "", basename(x)))
+      sub(re_package_name_ext(), "", sub("^.*_", "", basename(x)))
     )
   )
+}
+
+re_package_name_ext <- function() {
+  "([.]tar[.]gz|[.]tgz|[.]zip)$"
 }
 
 parse_package_list <- function(dir) {
@@ -18,7 +22,7 @@ parse_package_list <- function(dir) {
   html <- rvest::read_html(url)
   tab <- rvest::html_table(html)[[1]]
   # drop non-package files
-  tgz <- grepl("[.]tar[.]gz$", tab[["Name"]])
+  tgz <- grepl(re_package_name_ext(), tab[["Name"]])
   ptab <- tab[tgz, ]
   pkgver <- parse_file_name(ptab[["Name"]])
   tibble::tibble(
@@ -30,8 +34,20 @@ parse_package_list <- function(dir) {
 
 parse_metadata_file <- function(dir) {
   path <- file.path(repo_root(), "metadata", dir, "METADATA2.gz")
-  cli::cli_alert_info("Parsing metadata from {.path {path}}.")
-  tab <- tibble::tibble(read.csv(path))
+  if (file.exists(path)) {
+    cli::cli_alert_info("Parsing metadata from {.path {path}}.")
+    tab <- tibble::tibble(read.csv(path))
+  } else {
+    cli::cli_alert_warning("Metadata file does not exist: {.path {path}}.")
+    tab <- tibble::tibble(
+      file = character(),
+      size = integer(),
+      sha = character(),
+      sysreqs = character(),
+      built = character(),
+      published = character()
+    )
+  }
   tab
 }
 
