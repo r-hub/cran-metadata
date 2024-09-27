@@ -24,3 +24,7 @@ jobs:
         push: true
         target: runtime
         tags: ghcr.io/r-hub/cran-metadata:latest
+        secret-envs:
+          CODECOV_TOKEN=CODECOV_TOKEN
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

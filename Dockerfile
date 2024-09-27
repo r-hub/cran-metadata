@@ -24,6 +24,17 @@ RUN R -q -e 'pak::pkg_install("deps::.", dependencies = TRUE)'
 COPY tests /app/tests
 RUN R -q -e 'testthat::test_local()'
 
+# this only works on x86_64
+RUN R -q -e 'download.file("https://cli.codecov.io/latest/linux/codecov", "/usr/local/bin/codecov")' && \
+    chmod +x /usr/local/bin/codecov
+ENV NOT_CRAN=true
+RUN R -q -e 'covr::to_cobertura(print(covr::package_coverage()))'
+RUN --mount=type=secret,id=CODECOV_TOKEN \
+    if [ -f /run/secrets/CODECOV_TOKEN ]; then \
+      codecov do-upload --disable-search -f cobertura.xml --plugin noop \
+        --token `cat /run/secrets/CODECOV_TOKEN `; \
+    fi
+
 # -------------------------------------------------------------------------
 # this will force running the test step
 FROM build AS runtime
