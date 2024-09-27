@@ -1,6 +1,7 @@
 name: docker-build.yaml
 on:
   push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
