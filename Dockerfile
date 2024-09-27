@@ -34,7 +34,7 @@ ARG GITHUB_REPOSITORY
 ARG GITHUB_REF_NAME
 RUN --mount=type=secret,id=CODECOV_TOKEN \
     if [ -f /run/secrets/CODECOV_TOKEN ]; then \
-      codecov do-upload --disable-search -f cobertura.xml --plugin noop \
+      codecov upload-process --disable-search -f cobertura.xml --plugin noop \
         --git-service github --token `cat /run/secrets/CODECOV_TOKEN` \
         --sha ${GITHUB_SHA} --slug ${GITHUB_REPOSITORY} \
         --branch ${GITHUB_REF_NAME}; \

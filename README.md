@@ -1,5 +1,7 @@
 # Extra CRAN metadata for pak and pkgcache
 
+[![codecov](https://codecov.io/github/r-hub/cran-metadata/graph/badge.svg?token=QP22VG3Q51)](https://codecov.io/github/r-hub/cran-metadata?branch=main)
+
 Currently contains:
 - file sizes,
 - SHA 256 hashes,
