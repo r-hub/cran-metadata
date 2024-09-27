@@ -26,9 +26,9 @@ jobs:
         tags: ghcr.io/r-hub/cran-metadata:latest
         secret-envs:
           CODECOV_TOKEN=CODECOV_TOKEN
-        build-args:
-          - GITHUB_SHA=${{ github.sha }}
-          - GITHUB_REPOSITORY=${{ github.repository }}
-          - GITHUB_REF_NAME=${{ github.ref_name }}
+        build-args: |
+          GITHUB_SHA=${{ github.sha }}
+          GITHUB_REPOSITORY=${{ github.repository }}
+          GITHUB_REF_NAME=${{ github.ref_name }}
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
