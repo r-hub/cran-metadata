@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.7-labs
 FROM ghcr.io/r-lib/rig/ubuntu AS build
 
 # do this first, because it never changes, so it'll sit in the Docker cache
@@ -13,13 +14,14 @@ RUN R -q -e 'pak::pkg_install("deps::.", lib = .Library); pak::cache_clean(); pa
     apt-get clean && \
     rm DESCRIPTION
 
-# copy everything, minus the stuff in .dockerignore
-COPY . /app
+# copy everything, except the tests
+COPY --exclude=tests . /app
 WORKDIR /app
 
 # -------------------------------------------------------------------------
 FROM build AS test
 RUN R -q -e 'pak::pkg_install("deps::.", dependencies = TRUE)'
+COPY tests /app/tests
 RUN R -q -e 'testthat::test_local()'
 
 # -------------------------------------------------------------------------
