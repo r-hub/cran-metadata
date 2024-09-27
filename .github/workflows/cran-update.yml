@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: write
     container:
-      image: ghcr.io/r-hub/cran-metadata:latest
+      image: ghcr.io/${{ github.repository }}:latest
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}

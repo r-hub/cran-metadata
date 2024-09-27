@@ -23,7 +23,7 @@ jobs:
         platforms: linux/amd64
         push: true
         target: runtime
-        tags: ghcr.io/r-hub/cran-metadata:latest
+        tags: ghcr.io/${{ github.repository }}:latest
         secret-envs:
           CODECOV_TOKEN=CODECOV_TOKEN
         build-args: |
