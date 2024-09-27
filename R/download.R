@@ -1,4 +1,6 @@
-download_files_chunk_size <- function() 100
+download_files_chunk_size <- function() {
+  as.integer(Sys.getenv("TEST_DOWNLOAD_CHUNK_SIZE", 100))
+}
 
 download_files <- function(urls, destdir) {
   chks <- chunk(urls, download_files_chunk_size())
@@ -23,9 +25,9 @@ download_files_chunk <- function(urls, destdir) {
   httpfail <- dlres$success & dlres$status_code >= 300
   dlres$success[httpfail] <- FALSE
   dlres$error[httpfail] <- substr(paste0(
-    "HTTP error",
-    dlres$status_code[httpfail],
-    vapply(tmpfiles[httpfail], "", FUN = function(f) { read_file(f) })
+    "HTTP error ",
+    dlres$status_code[httpfail], ": ",
+    vapply(tmpfiles[miss][httpfail], "", FUN = function(f) { read_file(f) })
   ), 1, 300)
 
   if (any(!dlres$success)) {

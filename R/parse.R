@@ -1,5 +1,5 @@
 get_cran_mirror <- function() {
-  "https://cran.r-project.org"
+  Sys.getenv("TEST_CRAN_PACKAGE_MIRROR", "https://cran.r-project.org")
 }
 
 parse_file_name <- function(x) {

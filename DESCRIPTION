@@ -9,6 +9,9 @@ Imports:
     rvest,
     tibble
 Suggests:
-    testthat
+    mockery,
+    testthat (>= 3.0.0),
+    webfakes,
+    withr
 SystemRequirements: gzip, tar, unzip
 Config/testthat/edition: 3

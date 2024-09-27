@@ -1,5 +1,3 @@
-`%||%` <- function(l, r) if (is.null(l)) r else l
-
 `%&&%` <- function(l, r) if (is.null(l)) l else r
 
 is_na1 <- function(x) {
@@ -11,7 +9,7 @@ is_na1 <- function(x) {
 `%|NA|%` <- function(l, r) if (is_na1(l)) r else l
 
 chunk <- function(x, size) {
-  split(x, ceiling(seq_along(x)/size))
+  unname(split(x, ceiling(seq_along(x)/size)))
 }
 
 mkdirp <- function(x) {

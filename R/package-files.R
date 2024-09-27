@@ -20,8 +20,8 @@ get_desc_data_tar <- function(f, p) {
 }
 
 get_desc_data_zip <- function(f, p) {
-  cmd <- glue::glue("unzip -p \"{f}\" {p}/DESCRIPTION")
-  out <- system(cmd, intern = TRUE)
+  cmd <- glue::glue("unzip -p \"{f}\" {p}/DESCRIPTION 2>/dev/null")
+  out <- suppressWarnings(system(cmd, intern = TRUE))
   if (!is.null(attr(out, "status")) && attr(out, "status") >= 1) {
     NA_character_
   } else {
