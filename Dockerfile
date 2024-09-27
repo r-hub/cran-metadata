@@ -29,10 +29,15 @@ RUN R -q -e 'download.file("https://cli.codecov.io/latest/linux/codecov", "/usr/
     chmod +x /usr/local/bin/codecov
 ENV NOT_CRAN=true
 RUN R -q -e 'covr::to_cobertura(print(covr::package_coverage()))'
+ARG GITHUB_SHA
+ARG GITHUB_REPOSITORY
+ARG GITHUB_REF_NAME
 RUN --mount=type=secret,id=CODECOV_TOKEN \
     if [ -f /run/secrets/CODECOV_TOKEN ]; then \
       codecov do-upload --disable-search -f cobertura.xml --plugin noop \
-        --token `cat /run/secrets/CODECOV_TOKEN `; \
+        --git-service github --token `cat /run/secrets/CODECOV_TOKEN` \
+        --sha ${GITHUB_SHA} --slug ${GITHUB_REPOSITORY} \
+        --branch ${GITHUB_REF_NAME}; \
     fi
 
 # -------------------------------------------------------------------------
