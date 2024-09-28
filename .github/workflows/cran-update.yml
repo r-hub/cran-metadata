@@ -27,7 +27,7 @@ jobs:
     - name: Workaround a deployment bug
       run: git config --global safe.directory '*'
     - name: Deploy to GitHub pages 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.6.4
+      uses: JamesIves/github-pages-deploy-action@releases/v4-dubious-bug
       with:
         clean: false
         branch: gh-pages
