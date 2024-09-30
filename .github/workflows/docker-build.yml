@@ -13,3 +13,4 @@ jobs:
       uses: gaborcsardi/build-r-app@main
       with:
         codecov-token: ${{ secrets.CODECOV_TOKEN }}
+        ghcr-token: ${{ secrets.GITHUB_TOKEN }}
