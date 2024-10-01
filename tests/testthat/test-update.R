@@ -21,13 +21,13 @@ test_that("update_dir", {
   withr::local_options(cli.dynamic = FALSE, cli.ansi = FALSE)
 
   withr::local_envvar(TEST_CRAN_PACKAGE_MIRROR = fake_cran$url())
-  withr::local_envvar(GITHUB_WORKSPACE = test_path("fixtures"))
-  withr::local_envvar(RUNNER_TEMP = file.path(tmp, "cache"))
+  withr::local_envvar(R_APP_WORKSPACE = test_path("fixtures"))
+  withr::local_envvar(R_APP_TEMP = file.path(tmp, "cache"))
 
   # create a local METADATA2.gz file that is outdated
   meta <- suppressMessages(parse_metadata_file("src/contrib"))
   meta_upd <- rbind(meta, c("test_0.0.0.1.tar.gz", 1, NA, "", NA, ""))
-  withr::local_envvar(GITHUB_WORKSPACE = tmp)
+  withr::local_envvar(R_APP_WORKSPACE = tmp)
   write_metadata("src/contrib", meta_upd)
 
   expect_snapshot({

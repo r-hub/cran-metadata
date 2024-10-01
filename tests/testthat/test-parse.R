@@ -16,12 +16,12 @@ test_that("parse_package_list", {
 })
 
 test_that("parse_metadata_file", {
-  withr::local_envvar(GITHUB_WORKSPACE = test_path("fixtures"))
+  withr::local_envvar(R_APP_WORKSPACE = test_path("fixtures"))
   expect_snapshot({
     parse_metadata_file("src/contrib")
   })
 
-  withr::local_envvar(GITHUB_WORKSPACE = tempfile())
+  withr::local_envvar(R_APP_WORKSPACE = tempfile())
   expect_snapshot({
     parse_metadata_file("src/contrib")
   }, transform = redact_tempfile)
@@ -29,7 +29,7 @@ test_that("parse_metadata_file", {
 
 test_that("get_state", {
   withr::local_envvar(TEST_CRAN_PACKAGE_MIRROR = fake_cran$url())
-  withr::local_envvar(GITHUB_WORKSPACE = test_path("fixtures"))
+  withr::local_envvar(R_APP_WORKSPACE = test_path("fixtures"))
   expect_snapshot({
     get_state("src/contrib")
   }, transform = redact_webfakes)
