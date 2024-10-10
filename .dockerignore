@@ -6,3 +6,4 @@
 /.gitignore
 /.quarto
 /Dockerfile
+/.devcontainer
