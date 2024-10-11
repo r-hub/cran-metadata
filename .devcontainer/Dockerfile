@@ -8,7 +8,7 @@ ARG BASE=ghcr.io/r-lib/rig/ubuntu-22.04-release@sha256:1dc2de2cf32dd10945a4ed371
 # -------------------------------------------------------------------------
 # build stage has stuff needed for everything, e.g. R, hard dependencies
 # -------------------------------------------------------------------------
-FROM ${BASE} AS build
+FROM --platform=linux/amd64 ${BASE} AS build
 
 COPY ./DESCRIPTION .
 RUN R -q -e 'pak::pkg_install("deps::.", lib = .Library); pak::pak_cleanup(force = TRUE)' && \
