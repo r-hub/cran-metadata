@@ -2,7 +2,12 @@
     "name": "r-app",
     "postCreateCommand": "service ssh start",
     "dockerComposeFile": "docker-compose.yml",
-    "workspaceFolder": "/workspace",
+    "mounts": [{
+        "source": "..",
+        "target": "/workspace/${localWorkspaceFolderBasename}",
+        "type": "bind"
+    }],
+    "workspaceFolder": "/workspace/${localWorkspaceFolderBasename}",
     "service": "r-app",
     "shutdownAction": "stopCompose"
 }

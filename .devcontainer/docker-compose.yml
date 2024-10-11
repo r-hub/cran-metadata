@@ -3,8 +3,6 @@ services:
     build:
       dockerfile: .devcontainer/Dockerfile
       context: ..
-    volumes:
-      - ../:/workspace/
     command: sleep infinity
     ports:
       - 2222:2222
