@@ -1,13 +1,14 @@
 {
     "name": "r-app",
-    "postCreateCommand": "sh -c \"echo Port ${PORT} >> /etc/ssh/sshd_config && service ssh start\"",
+    "postCreateCommand": "service ssh start",
     "dockerComposeFile": "docker-compose.yml",
+    "service": "r-app",
+    "shutdownAction": "stopCompose",
+    // It is not mounted automatically if we use a compose file (?)
     "mounts": [{
         "source": "..",
         "target": "/workspaces/${localWorkspaceFolderBasename}",
         "type": "bind"
     }],
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-    "service": "r-app",
-    "shutdownAction": "stopCompose"
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
 }
