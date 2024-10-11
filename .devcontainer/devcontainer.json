@@ -1,6 +1,6 @@
 {
     "name": "r-app",
-    "postCreateCommand": "service ssh start",
+    "postCreateCommand": "sh -c \"echo Port ${PORT} >> /etc/ssh/sshd_config && service ssh start\"",
     "dockerComposeFile": "docker-compose.yml",
     "mounts": [{
         "source": "..",

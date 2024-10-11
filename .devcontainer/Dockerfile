@@ -80,10 +80,6 @@ RUN apt-get update && \
     apt-get install -y openssh-server && \
     apt-get clean
 
-ARG PORT=2222
 RUN echo PermitRootLogin yes >> /etc/ssh/sshd_config && \
-    echo Port ${PORT} >> /etc/ssh/sshd_config && \
     echo PermitEmptyPasswords yes >> /etc/ssh/sshd_config && \
     passwd -d root
-
-EXPOSE ${PORT}

@@ -3,8 +3,8 @@ services:
     build:
       dockerfile: .devcontainer/Dockerfile
       context: ..
-      args:
-        PORT: ${PORT:-2222}
     command: sleep infinity
     ports:
       - ${PORT:-2222}:${PORT:-2222}
+    environment:
+      PORT: ${PORT:-2222}
