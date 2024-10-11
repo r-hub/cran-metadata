@@ -1,4 +1,4 @@
-name: cran-update.yml
+name: run.yml
 on:
   workflow_dispatch:
   schedule:

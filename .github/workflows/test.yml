@@ -1,7 +1,8 @@
-name: docker-build.yaml
+name: deploy.yaml
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -15,3 +16,4 @@ jobs:
       with:
         codecov-token: ${{ secrets.CODECOV_TOKEN }}
         ghcr-token: ${{ secrets.GITHUB_TOKEN }}
+        push: false
