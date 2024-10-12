@@ -45,6 +45,7 @@ ARG GITHUB_REPOSITORY
 ARG GITHUB_REF_NAME
 RUN --mount=type=secret,id=CODECOV_TOKEN \
     if [ -d tests ] && [ -f /run/secrets/CODECOV_TOKEN ]; then \
+      apt-get update && apt-get install -y git && \
       R -q -e 'download.file("https://cli.codecov.io/latest/linux/codecov", "/usr/local/bin/codecov")' && \
       chmod +x /usr/local/bin/codecov && \
       codecov upload-process --disable-search -f cobertura.xml --plugin noop \
