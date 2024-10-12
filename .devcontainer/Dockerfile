@@ -32,7 +32,8 @@ RUN R -q -e 'pak::pkg_install("deps::.", dependencies = TRUE)'; \
 # -------------------------------------------------------------------------
 FROM test-deps AS test
 
-COPY . .
+COPY . /app
+WORKDIR /app
 
 RUN if [ -d tests ]; then \
       R -q -e 'testthat::test_local()'; \
@@ -60,7 +61,7 @@ FROM build AS prod
 COPY --from=test /tmp/dummy* /tmp/
 
 # copy everything, except the tests
-COPY --exclude=tests . .
+COPY --exclude=tests . /app
 
 # tools neeed for prod
 RUN apt-get update && \
