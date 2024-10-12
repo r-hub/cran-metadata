@@ -1,8 +1,8 @@
 services:
   r-app:
     build:
-      dockerfile: .devcontainer/Dockerfile
-      context: ..
+      dockerfile: Dockerfile
+      context: .
     command: sleep infinity
     ports:
       - ${PORT:-2222}:2222

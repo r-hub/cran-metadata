@@ -22,7 +22,6 @@ jobs:
     - name: Build
       uses: docker/build-push-action@v6
       with:
-        file: .devcontainer/Dockerfile
         platforms: linux/amd64
         push: false
         target: test

@@ -32,7 +32,7 @@ If you use Positron, then for the first time:
    ```
 1. Use a random port for SSH (optional).
    ```
-   echo PORT=2222 >> .devcontainer/.env
+   echo PORT=2222 >> .env
    ```
 1. Build and start the dev container:
    ```
@@ -60,7 +60,7 @@ Positron does not stop the container when it disconnects. The devcontainer
 cli also cannot stop it currently. To stop the container call docker
 directly:
 ```
-docker stop cran-metadata_devcontainer-r-app-1
+docker stop cran-metadata-r-app-1
 ```
 
 #### Restarting
@@ -74,8 +74,8 @@ devcontainer up --workspace-folder .
 
 To rebuild a container stop it and delete it before you build it again:
 ```
-docker stop cran-metadata_devcontainer-r-app-1
-docker rm cran-metadata_devcontainer-r-app-1
+docker stop cran-metadata-r-app-1
+docker rm cran-metadata-r-app-1
 devcontainer up --workspace-folder .
 ```
 
