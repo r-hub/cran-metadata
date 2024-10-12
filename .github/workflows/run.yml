@@ -25,6 +25,9 @@ jobs:
     - name: Update
       run: Rscript index.R
       working-directory: /app
+      env:
+        R_APP_WORKSPACE: ${{ github.workspace }}
+        R_APP_TEMP: ${{ runner.temp }}
     - name: Deploy to GitHub pages 🚀
       uses: JamesIves/github-pages-deploy-action@v4.6.8
       with:
