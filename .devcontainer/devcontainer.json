@@ -6,9 +6,14 @@
     "shutdownAction": "stopCompose",
     // It is not mounted automatically if we use a compose file (?)
     "mounts": [{
-        "source": "..",
-        "target": "/workspaces/${localWorkspaceFolderBasename}",
-        "type": "bind"
-    }],
+            "source": "..",
+            "target": "/workspaces/${localWorkspaceFolderBasename}",
+            "type": "bind"
+        }, {
+            "source": "~/.gitconfig",
+            "target": "/etc/gitconfig",
+            "type": "bind"
+        }
+    ],
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
 }
