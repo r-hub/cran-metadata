@@ -86,3 +86,5 @@ RUN echo PermitRootLogin yes >> /etc/ssh/sshd_config && \
     echo PermitEmptyPasswords yes >> /etc/ssh/sshd_config && \
     echo Port 2222 >> /etc/ssh/sshd_config && \
     passwd -d root
+
+RUN git config --global --add safe.directory '/workspaces/*'
