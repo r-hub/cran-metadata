@@ -79,13 +79,6 @@ docker rm cran-metadata_devcontainer-r-app-1
 devcontainer up --workspace-folder .
 ```
 
-#### Known issues
-
-In addition to the extra setup, for now expect some hiccups when using
-dev containers:
-* No git credentials. The credentials are not forwarded to the container
-  from the host, so you probably cannot push to remote repositories.
-
 # License
 
 MIT (c) Posit, PBC
