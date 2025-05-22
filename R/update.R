@@ -21,7 +21,7 @@ get_package_directories <- function() {
     "bin/windows/contrib/4.2",
     "bin/windows/contrib/4.3",
     "bin/windows/contrib/4.4",
-    "bin/windows/contrib/4.5"
+    "bin/windows/contrib/4.5",
     "bin/windows/contrib/4.6"
   )
 }
