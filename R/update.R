@@ -10,9 +10,11 @@ get_package_directories <- function() {
     # new macOS x86_64
     "bin/macosx/big-sur-x86_64/contrib/4.3",
     "bin/macosx/big-sur-x86_64/contrib/4.4",
+    "bin/macosx/big-sur-x86_64/contrib/4.5",
     # new macOS arm64
     "bin/macosx/big-sur-arm64/contrib/4.3",
     "bin/macosx/big-sur-arm64/contrib/4.4",
+    "bin/macosx/big-sur-arm64/contrib/4.5",
     # windows
     # "bin/windows/contrib/4.0",
     # "bin/windows/contrib/4.1",
@@ -20,6 +22,7 @@ get_package_directories <- function() {
     "bin/windows/contrib/4.3",
     "bin/windows/contrib/4.4",
     "bin/windows/contrib/4.5"
+    "bin/windows/contrib/4.6"
   )
 }
 
