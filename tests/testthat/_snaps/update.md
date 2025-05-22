@@ -7,12 +7,15 @@
        [2] "bin/macosx/big-sur-arm64/contrib/4.2" 
        [3] "bin/macosx/big-sur-x86_64/contrib/4.3"
        [4] "bin/macosx/big-sur-x86_64/contrib/4.4"
-       [5] "bin/macosx/big-sur-arm64/contrib/4.3" 
-       [6] "bin/macosx/big-sur-arm64/contrib/4.4" 
-       [7] "bin/windows/contrib/4.2"              
-       [8] "bin/windows/contrib/4.3"              
-       [9] "bin/windows/contrib/4.4"              
-      [10] "bin/windows/contrib/4.5"              
+       [5] "bin/macosx/big-sur-x86_64/contrib/4.5"
+       [6] "bin/macosx/big-sur-arm64/contrib/4.3" 
+       [7] "bin/macosx/big-sur-arm64/contrib/4.4" 
+       [8] "bin/macosx/big-sur-arm64/contrib/4.5" 
+       [9] "bin/windows/contrib/4.2"              
+      [10] "bin/windows/contrib/4.3"              
+      [11] "bin/windows/contrib/4.4"              
+      [12] "bin/windows/contrib/4.5"              
+      [13] "bin/windows/contrib/4.6"              
 
 # update
 
@@ -23,12 +26,15 @@
       i Updating 'bin/macosx/big-sur-arm64/contrib/4.2'.
       i Updating 'bin/macosx/big-sur-x86_64/contrib/4.3'.
       i Updating 'bin/macosx/big-sur-x86_64/contrib/4.4'.
+      i Updating 'bin/macosx/big-sur-x86_64/contrib/4.5'.
       i Updating 'bin/macosx/big-sur-arm64/contrib/4.3'.
       i Updating 'bin/macosx/big-sur-arm64/contrib/4.4'.
+      i Updating 'bin/macosx/big-sur-arm64/contrib/4.5'.
       i Updating 'bin/windows/contrib/4.2'.
       i Updating 'bin/windows/contrib/4.3'.
       i Updating 'bin/windows/contrib/4.4'.
       i Updating 'bin/windows/contrib/4.5'.
+      i Updating 'bin/windows/contrib/4.6'.
 
 # update_dir
 
